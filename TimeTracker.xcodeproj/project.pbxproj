@@ -9,21 +9,22 @@
 /* Begin PBXBuildFile section */
 		8CDBC29C28D51AD500D081C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC29B28D51AD500D081C8 /* AppDelegate.swift */; };
 		8CDBC29E28D51AD500D081C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC29D28D51AD500D081C8 /* SceneDelegate.swift */; };
-		8CDBC2A028D51AD500D081C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC29F28D51AD500D081C8 /* ViewController.swift */; };
-		8CDBC2A328D51AD500D081C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBC2A128D51AD500D081C8 /* Main.storyboard */; };
 		8CDBC2A528D51AD600D081C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBC2A428D51AD600D081C8 /* Assets.xcassets */; };
 		8CDBC2A828D51AD600D081C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBC2A628D51AD600D081C8 /* LaunchScreen.storyboard */; };
+		8CDBC2B128D51BDD00D081C8 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC2B028D51BDD00D081C8 /* MainVC.swift */; };
+		8CDBC2B428D51C6300D081C8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8CDBC2B328D51C6300D081C8 /* SnapKit */; };
+		8CDBC2B628D529AE00D081C8 /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC2B528D529AE00D081C8 /* Stopwatch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8CDBC29828D51AD500D081C8 /* TimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDBC29B28D51AD500D081C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CDBC29D28D51AD500D081C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8CDBC29F28D51AD500D081C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8CDBC2A228D51AD500D081C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CDBC2A428D51AD600D081C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CDBC2A728D51AD600D081C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CDBC2A928D51AD600D081C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CDBC2B028D51BDD00D081C8 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		8CDBC2B528D529AE00D081C8 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CDBC2B428D51C6300D081C8 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +58,23 @@
 		8CDBC29A28D51AD500D081C8 /* TimeTracker */ = {
 			isa = PBXGroup;
 			children = (
+				8CDBC2AF28D51BB700D081C8 /* UI */,
 				8CDBC29B28D51AD500D081C8 /* AppDelegate.swift */,
 				8CDBC29D28D51AD500D081C8 /* SceneDelegate.swift */,
-				8CDBC29F28D51AD500D081C8 /* ViewController.swift */,
-				8CDBC2A128D51AD500D081C8 /* Main.storyboard */,
 				8CDBC2A428D51AD600D081C8 /* Assets.xcassets */,
 				8CDBC2A628D51AD600D081C8 /* LaunchScreen.storyboard */,
 				8CDBC2A928D51AD600D081C8 /* Info.plist */,
+				8CDBC2B528D529AE00D081C8 /* Stopwatch.swift */,
 			);
 			path = TimeTracker;
+			sourceTree = "<group>";
+		};
+		8CDBC2AF28D51BB700D081C8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8CDBC2B028D51BDD00D081C8 /* MainVC.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +93,9 @@
 			dependencies = (
 			);
 			name = TimeTracker;
+			packageProductDependencies = (
+				8CDBC2B328D51C6300D081C8 /* SnapKit */,
+			);
 			productName = TimeTracker;
 			productReference = 8CDBC29828D51AD500D081C8 /* TimeTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 8CDBC28F28D51AD400D081C8;
+			packageReferences = (
+				8CDBC2B228D51C6300D081C8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 8CDBC29928D51AD500D081C8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +143,6 @@
 			files = (
 				8CDBC2A828D51AD600D081C8 /* LaunchScreen.storyboard in Resources */,
 				8CDBC2A528D51AD600D081C8 /* Assets.xcassets in Resources */,
-				8CDBC2A328D51AD500D081C8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +153,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CDBC2A028D51AD500D081C8 /* ViewController.swift in Sources */,
+				8CDBC2B128D51BDD00D081C8 /* MainVC.swift in Sources */,
 				8CDBC29C28D51AD500D081C8 /* AppDelegate.swift in Sources */,
 				8CDBC29E28D51AD500D081C8 /* SceneDelegate.swift in Sources */,
+				8CDBC2B628D529AE00D081C8 /* Stopwatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8CDBC2A128D51AD500D081C8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8CDBC2A228D51AD500D081C8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8CDBC2A628D51AD600D081C8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,7 +299,6 @@
 				INFOPLIST_FILE = TimeTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,7 +325,6 @@
 				INFOPLIST_FILE = TimeTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -356,6 +362,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8CDBC2B228D51C6300D081C8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8CDBC2B328D51C6300D081C8 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CDBC2B228D51C6300D081C8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8CDBC29028D51AD400D081C8 /* Project object */;
 }

@@ -18,11 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
 
-        let vc = MainVC()
+        let stopwatchTimer = StopwatchDisplayLinkTimer()
+        let stopwatch = Stopwatch(stopwatchTimer: stopwatchTimer)
+
+        let vc = MainVC(stopwatch: stopwatch)
         let nvc = UINavigationController(rootViewController: vc)
 
         window.rootViewController = nvc
         window.makeKeyAndVisible()
+
+        stopwatchTimer.start()
     }
 }
 

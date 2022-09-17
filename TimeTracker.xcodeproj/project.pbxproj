@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C2F757028D6409500569B1B /* StopwatchListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F756F28D6409500569B1B /* StopwatchListVC.swift */; };
+		8C2F757328D6426000569B1B /* StopwatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F757228D6426000569B1B /* StopwatchCell.swift */; };
+		8C2F757828D683CB00569B1B /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F757728D683CB00569B1B /* UICollectionView+Utils.swift */; };
 		8CDBC29C28D51AD500D081C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC29B28D51AD500D081C8 /* AppDelegate.swift */; };
 		8CDBC29E28D51AD500D081C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC29D28D51AD500D081C8 /* SceneDelegate.swift */; };
 		8CDBC2A528D51AD600D081C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBC2A428D51AD600D081C8 /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C2F756F28D6409500569B1B /* StopwatchListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchListVC.swift; sourceTree = "<group>"; };
+		8C2F757228D6426000569B1B /* StopwatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchCell.swift; sourceTree = "<group>"; };
+		8C2F757728D683CB00569B1B /* UICollectionView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utils.swift"; sourceTree = "<group>"; };
 		8CDBC29828D51AD500D081C8 /* TimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDBC29B28D51AD500D081C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CDBC29D28D51AD500D081C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +69,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C2F757128D6424600569B1B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8C2F757228D6426000569B1B /* StopwatchCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8C2F757628D683A300569B1B /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				8C2F757728D683CB00569B1B /* UICollectionView+Utils.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		8CDBC28F28D51AD400D081C8 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +106,7 @@
 		8CDBC29A28D51AD500D081C8 /* TimeTracker */ = {
 			isa = PBXGroup;
 			children = (
+				8C2F757628D683A300569B1B /* Extentions */,
 				8CDBC2AF28D51BB700D081C8 /* UI */,
 				8CDBC29B28D51AD500D081C8 /* AppDelegate.swift */,
 				8CDBC29D28D51AD500D081C8 /* SceneDelegate.swift */,
@@ -99,7 +122,9 @@
 		8CDBC2AF28D51BB700D081C8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8C2F757128D6424600569B1B /* Cells */,
 				8CDBC2B028D51BDD00D081C8 /* MainVC.swift */,
+				8C2F756F28D6409500569B1B /* StopwatchListVC.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -219,8 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C2F757828D683CB00569B1B /* UICollectionView+Utils.swift in Sources */,
 				8CDBC2B128D51BDD00D081C8 /* MainVC.swift in Sources */,
 				8CDBC29C28D51AD500D081C8 /* AppDelegate.swift in Sources */,
+				8C2F757328D6426000569B1B /* StopwatchCell.swift in Sources */,
+				8C2F757028D6409500569B1B /* StopwatchListVC.swift in Sources */,
 				8CDBC29E28D51AD500D081C8 /* SceneDelegate.swift in Sources */,
 				8CDBC2B828D60DEB00D081C8 /* StopwatchTimer.swift in Sources */,
 				8CDBC2B628D529AE00D081C8 /* Stopwatch.swift in Sources */,

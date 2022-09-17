@@ -19,9 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
 
         let stopwatchTimer = StopwatchDisplayLinkTimer()
-        let stopwatch = Stopwatch(stopwatchTimer: stopwatchTimer)
 
-        let vc = MainVC(stopwatch: stopwatch)
+        let vc = StopwatchListVC(stopwatchTimer: stopwatchTimer)
         let nvc = UINavigationController(rootViewController: vc)
 
         window.rootViewController = nvc

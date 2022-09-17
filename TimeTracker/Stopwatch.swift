@@ -27,6 +27,7 @@ protocol StopwatchProtocol: AnyObject {
     var delegate: StopwatchDelegate? { get set }
 
     init(stopwatchTimer: StopwatchTimer)
+
     func start()
     func pause()
     func reset()

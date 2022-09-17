@@ -35,7 +35,7 @@ protocol StopwatchProtocol: AnyObject {
 }
 
 protocol StopwatchDelegate: AnyObject {
-    func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int, milliseconds: Int)
+    func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int)
     func stopwatchStateDidChange(stopwatch: Stopwatch)
 }
 
@@ -79,7 +79,7 @@ final class Stopwatch: StopwatchProtocol {
 
     func reset() {
         state = .empty
-        delegate?.stopwatchTimeDidChange(hours: 0, minutes: 0, seconds: 0, milliseconds: 0)
+        delegate?.stopwatchTimeDidChange(hours: 0, minutes: 0, seconds: 0)
     }
 
     func handleTimerEvent() {
@@ -90,12 +90,10 @@ final class Stopwatch: StopwatchProtocol {
             return
         }
 
-        let allSeconds = Int((timer.currentTime - startedAt) * 100)
-        let roundedSeconds = allSeconds / 100
-        let hours = roundedSeconds / 3600
-        let minutes = (roundedSeconds - hours * 3600) / 60
-        let seconds = roundedSeconds % 60
-        let milliseconds = allSeconds - ((hours * 3600 + minutes * 60 + seconds) * 100)
-        delegate.stopwatchTimeDidChange(hours: hours, minutes: minutes, seconds: seconds, milliseconds: milliseconds)
+        let allSeconds = Int((timer.currentTime - startedAt))
+        let hours = allSeconds / 3600
+        let minutes = (allSeconds - hours * 3600) / 60
+        let seconds = allSeconds % 60
+        delegate.stopwatchTimeDidChange(hours: hours, minutes: minutes, seconds: seconds)
     }
 }

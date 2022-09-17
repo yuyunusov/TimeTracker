@@ -112,8 +112,8 @@ final class MainVC: UIViewController {
 }
 
 extension MainVC: StopwatchDelegate {
-    func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int, milliseconds: Int) {
-        label.text = "\(minutes):\(String(format: "%02d", seconds)):\(String(format: "%02d", milliseconds))"
+    func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int) {
+        label.text = "\(minutes):\(String(format: "%02d", seconds)):\(String(format: "%02d", 0))"
     }
 
     func stopwatchStateDidChange(stopwatch: Stopwatch) {

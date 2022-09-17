@@ -123,8 +123,12 @@ final class StopwatchCell: UICollectionViewCell {
 }
 
 extension StopwatchCell: StopwatchDelegate {
-    func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int, milliseconds: Int) {
-        label.text = "\(hours):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
+    func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int) {
+        let text = "\(hours):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
+        guard label.text != text else {
+            return
+        }
+        label.text = text
     }
 
     func stopwatchStateDidChange(stopwatch: Stopwatch) {

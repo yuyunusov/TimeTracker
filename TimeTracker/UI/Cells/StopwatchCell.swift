@@ -81,6 +81,7 @@ final class StopwatchCell: UICollectionViewCell {
 
     private var stopwatch: StopwatchProtocol? {
         didSet {
+            label.text = "0:00:00"
             resetButton.setNeedsUpdateConfiguration()
             startButton.setNeedsUpdateConfiguration()
         }
@@ -122,8 +123,8 @@ final class StopwatchCell: UICollectionViewCell {
 }
 
 extension StopwatchCell: StopwatchDelegate {
-    func stopwatchTimeDidChange(minutes: Int, seconds: Int, milliseconds: Int) {
-        label.text = "\(minutes):\(String(format: "%02d", seconds)):\(String(format: "%02d", milliseconds))"
+    func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int, milliseconds: Int) {
+        label.text = "\(hours):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
     }
 
     func stopwatchStateDidChange(stopwatch: Stopwatch) {

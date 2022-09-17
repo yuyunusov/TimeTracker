@@ -26,7 +26,7 @@ final class StopwatchDisplayLinkTimer: StopwatchTimer {
 
     func start() {
         let displayLink = CADisplayLink(target: self, selector: #selector(handleDisplayLink))
-        displayLink.preferredFrameRateRange = CAFrameRateRange(minimum: 25, maximum: 25)
+        displayLink.preferredFrameRateRange = CAFrameRateRange(minimum: 1, maximum: 1)
         displayLink.add(to: .main, forMode: .common)
         self.displayLink = displayLink
     }

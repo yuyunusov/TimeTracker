@@ -25,9 +25,10 @@ class StopwatchTimerMock: StopwatchTimer {
 }
 
 class StopwatchMockDelegate: StopwatchDelegate {
-    var minutes: Int?, seconds: Int?, milliseconds: Int?
+    var hours: Int?, minutes: Int?, seconds: Int?, milliseconds: Int?
 
-    func stopwatchTimeDidChange(minutes: Int, seconds: Int, milliseconds: Int) {
+    func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int, milliseconds: Int) {
+        self.hours = hours
         self.minutes = minutes
         self.seconds = seconds
         self.milliseconds = milliseconds
@@ -67,11 +68,13 @@ final class StopwatchTests: XCTestCase {
     func testStart() {
         stopwatchTimerMock.currentTime = 0.0
         stopwatch.start()
-        stopwatchTimerMock.currentTime = 61.05
+        stopwatchTimerMock.currentTime = 3661.05
         stopwatch.handleTimerEvent()
+        XCTAssertNotNil(stopwatchMockDelegate.hours)
         XCTAssertNotNil(stopwatchMockDelegate.minutes)
         XCTAssertNotNil(stopwatchMockDelegate.seconds)
         XCTAssertNotNil(stopwatchMockDelegate.milliseconds)
+        XCTAssertEqual(stopwatchMockDelegate.hours, 1)
         XCTAssertEqual(stopwatchMockDelegate.minutes, 1)
         XCTAssertEqual(stopwatchMockDelegate.seconds, 1)
         XCTAssertEqual(stopwatchMockDelegate.milliseconds, 5)
@@ -90,9 +93,6 @@ final class StopwatchTests: XCTestCase {
         stopwatch.start()
         stopwatchTimerMock.currentTime = 16.0
         stopwatch.handleTimerEvent() // elapsed 1.0 + 5.0 + 1.0 seconds
-        XCTAssertNotNil(stopwatchMockDelegate.minutes)
-        XCTAssertNotNil(stopwatchMockDelegate.seconds)
-        XCTAssertNotNil(stopwatchMockDelegate.milliseconds)
         XCTAssertEqual(stopwatchMockDelegate.minutes, 0)
         XCTAssertEqual(stopwatchMockDelegate.seconds, 7)
         XCTAssertEqual(stopwatchMockDelegate.milliseconds, 0)
@@ -104,9 +104,6 @@ final class StopwatchTests: XCTestCase {
         stopwatchTimerMock.currentTime = 1.0
         stopwatch.handleTimerEvent()
         stopwatch.reset()
-        XCTAssertNotNil(stopwatchMockDelegate.minutes)
-        XCTAssertNotNil(stopwatchMockDelegate.seconds)
-        XCTAssertNotNil(stopwatchMockDelegate.milliseconds)
         XCTAssertEqual(stopwatchMockDelegate.minutes, 0)
         XCTAssertEqual(stopwatchMockDelegate.seconds, 0)
         XCTAssertEqual(stopwatchMockDelegate.milliseconds, 0)

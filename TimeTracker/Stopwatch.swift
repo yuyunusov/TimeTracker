@@ -48,11 +48,46 @@ final class Stopwatch: StopwatchProtocol {
             delegate?.stopwatchStateDidChange(stopwatch: self)
         }
     }
-    weak var delegate: StopwatchDelegate?
+    weak var delegate: StopwatchDelegate? {
+        didSet {
+            sendCalculatedElapsedTime()
+        }
+    }
 
     init(stopwatchTimer: StopwatchTimer) {
         timer = stopwatchTimer
         timer.register(stopwatch: self)
+    }
+
+    private func sendCalculatedElapsedTime() {
+        guard let delegate = delegate else {
+            return
+        }
+        let startedAt: CFTimeInterval? = {
+            switch state {
+            case let .started(startedAt):
+                return startedAt
+            case let .paused(pausedAt, startedAt):
+                let pausedTime = timer.currentTime - pausedAt
+                return startedAt + pausedTime
+            case .empty:
+                return nil
+            }
+        }()
+
+        let elapsedTime: CFTimeInterval = {
+            if let startedAt = startedAt {
+                return timer.currentTime - startedAt
+            } else {
+                return 0.0
+            }
+        }()
+
+        let allSeconds = Int(elapsedTime)
+        let hours = allSeconds / 3600
+        let minutes = (allSeconds - hours * 3600) / 60
+        let seconds = allSeconds % 60
+        delegate.stopwatchTimeDidChange(hours: hours, minutes: minutes, seconds: seconds)
     }
 
     func start() {
@@ -83,17 +118,9 @@ final class Stopwatch: StopwatchProtocol {
     }
 
     func handleTimerEvent() {
-        guard
-            case let .started(startedAt) = state,
-            let delegate = delegate
-        else {
+        guard state == .started(0.0) else {
             return
         }
-
-        let allSeconds = Int((timer.currentTime - startedAt))
-        let hours = allSeconds / 3600
-        let minutes = (allSeconds - hours * 3600) / 60
-        let seconds = allSeconds % 60
-        delegate.stopwatchTimeDidChange(hours: hours, minutes: minutes, seconds: seconds)
+        sendCalculatedElapsedTime()
     }
 }

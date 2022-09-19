@@ -57,11 +57,11 @@ final class StopwatchTests: XCTestCase {
 
     func testState() {
         stopwatch.start()
-        XCTAssertEqual(stopwatch.state, .started(0.0))
+        XCTAssertTrue(stopwatch.state.isStarted)
         stopwatch.pause()
-        XCTAssertEqual(stopwatch.state, .paused(0.0, 0.0))
+        XCTAssertTrue(stopwatch.state.isPaused)
         stopwatch.reset()
-        XCTAssertEqual(stopwatch.state, .empty)
+        XCTAssertTrue(stopwatch.state.isEmpty)
     }
 
     func testStart() {

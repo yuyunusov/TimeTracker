@@ -44,7 +44,7 @@ final class StopwatchDisplayLinkTimer: StopwatchTimer {
             return
         }
 
-        for stopwatch in stopwatches where stopwatch.state == .started(0.0) {
+        for stopwatch in stopwatches where stopwatch.state.isStarted {
             stopwatch.handleTimerEvent()
         }
     }

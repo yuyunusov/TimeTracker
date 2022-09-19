@@ -7,14 +7,32 @@
 
 import UIKit
 
-enum StopwatchState: Equatable {
+enum StopwatchState {
     case started(_ at: CFTimeInterval)
     case paused(_ at: CFTimeInterval, _ startedAt: CFTimeInterval)
     case empty
 
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        switch (lhs, rhs) {
-        case (.started, .started), (.paused, .paused), (.empty, .empty):
+    var isStarted: Bool {
+        switch self {
+        case .started:
+            return true
+        default:
+            return false
+        }
+    }
+
+    var isPaused: Bool {
+        switch self {
+        case .paused:
+            return true
+        default:
+            return false
+        }
+    }
+
+    var isEmpty: Bool {
+        switch self {
+        case .empty:
             return true
         default:
             return false
@@ -118,7 +136,7 @@ final class Stopwatch: StopwatchProtocol {
     }
 
     func handleTimerEvent() {
-        guard state == .started(0.0) else {
+        guard state.isStarted else {
             return
         }
         sendCalculatedElapsedTime()

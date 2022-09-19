@@ -83,20 +83,18 @@ final class StopwatchCell: UICollectionViewCell {
     private func setupLayout() {
         contentView.addSubview(timerLabel)
         timerLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(16.0)
-            make.top.equalToSuperview().inset(24.0)
+            make.leading.top.equalToSuperview().inset(Constants.defaultMargin)
         }
 
         contentView.addSubview(stateButton)
         stateButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16.0)
-            make.top.equalToSuperview().inset(16.0)
+            make.trailing.top.equalToSuperview().inset(Constants.defaultMargin)
             make.size.equalTo(CGSize(width: 40.0, height: 40.0))
         }
     }
 
     private func setupUI() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = Theme.cellBackgroundColor
         contentView.layer.cornerRadius = 12.0
     }
 
@@ -118,4 +116,8 @@ extension StopwatchCell: StopwatchDelegate {
     func stopwatchStateDidChange(stopwatch: Stopwatch) {
         stateButton.setNeedsUpdateConfiguration()
     }
+}
+
+private enum Constants {
+    static let defaultMargin = 16.0
 }

@@ -17,7 +17,6 @@
 		8CDBC2B428D51C6300D081C8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8CDBC2B328D51C6300D081C8 /* SnapKit */; };
 		8CDBC2B628D529AE00D081C8 /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC2B528D529AE00D081C8 /* Stopwatch.swift */; };
 		8CDBC2B828D60DEB00D081C8 /* StopwatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC2B728D60DEB00D081C8 /* StopwatchTimer.swift */; };
-		8CDBC2C028D61B7900D081C8 /* TimeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC2BF28D61B7900D081C8 /* TimeTrackerTests.swift */; };
 		8CDBC2C728D620DB00D081C8 /* StopwatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBC2C628D620DB00D081C8 /* StopwatchTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 		8CDBC2B528D529AE00D081C8 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		8CDBC2B728D60DEB00D081C8 /* StopwatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTimer.swift; sourceTree = "<group>"; };
 		8CDBC2BD28D61B7900D081C8 /* TimeTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CDBC2BF28D61B7900D081C8 /* TimeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerTests.swift; sourceTree = "<group>"; };
 		8CDBC2C628D620DB00D081C8 /* StopwatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +127,6 @@
 		8CDBC2BE28D61B7900D081C8 /* TimeTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				8CDBC2BF28D61B7900D081C8 /* TimeTrackerTests.swift */,
 				8CDBC2C628D620DB00D081C8 /* StopwatchTests.swift */,
 			);
 			path = TimeTrackerTests;
@@ -255,7 +252,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CDBC2C028D61B7900D081C8 /* TimeTrackerTests.swift in Sources */,
 				8CDBC2C728D620DB00D081C8 /* StopwatchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

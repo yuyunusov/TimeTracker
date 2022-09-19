@@ -14,12 +14,13 @@ final class StopwatchListVC: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 8.0
+        layout.minimumLineSpacing = 16.0
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(StopwatchCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
 
@@ -42,7 +43,7 @@ final class StopwatchListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = .init(red: 249.0/255.0, green: 249.0/255.0, blue: 1.0, alpha: 1.0)
         title = "Stopwatch List"
 
         setupLayout()
@@ -93,6 +94,10 @@ extension StopwatchListVC: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        .init(width: collectionView.bounds.width, height: 50.0)
+        .init(width: collectionView.bounds.width - Constants.defaultMargin*2, height: 114.0)
     }
+}
+
+private enum Constants {
+    static let defaultMargin = 16.0
 }

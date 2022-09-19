@@ -9,81 +9,56 @@ import UIKit
 
 final class StopwatchCell: UICollectionViewCell {
 
-    private let label: UILabel = {
+    private let timerLabel: UILabel = {
         let label = UILabel()
         label.text = "0:00:00"
-        label.font = .systemFont(ofSize: 18.0)
+        label.font = .systemFont(ofSize: 32.0)
         return label
     }()
 
-    private lazy var startButton: UIButton = {
+    private lazy var stateButton: UIButton = {
         let button = UIButton()
-        button.configuration = UIButton.Configuration.filled()
+        button.configuration = UIButton.Configuration.gray()
         button.configurationUpdateHandler = { [weak self] button in
             guard let stopwatch = self?.stopwatch else {
                 return
             }
             var config = button.configuration
             switch stopwatch.state {
-            case .empty, .paused:
-                config?.title = "Start"
-                config?.baseBackgroundColor = .systemBlue
             case .started:
-                config?.title = "Pause"
-                config?.baseBackgroundColor = .systemRed
+                config?.image = UIImage(systemName: "pause.fill")
+            case .paused, .empty:
+                config?.image = UIImage(systemName: "play.fill")
             }
+
+            config?.baseBackgroundColor = .systemGray
+            config?.cornerStyle = .capsule
+            config?.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 14.0)
 
             button.configuration = config
         }
         button.addAction(
             UIAction { _ in
-                guard let stopwatch = self.stopwatch else {
-                    return
-                }
-                switch stopwatch.state {
+                switch self.stopwatch?.state {
                 case .started:
-                    stopwatch.pause()
+                    self.stopwatch?.pause()
                 case .paused, .empty:
-                    stopwatch.start()
+                    self.stopwatch?.start()
+                case .none:
+                    break
                 }
             },
             for: .touchUpInside
         )
-        return button
-    }()
-
-    private lazy var resetButton: UIButton = {
-        let button = UIButton()
-        button.configuration = UIButton.Configuration.filled()
-        button.configurationUpdateHandler = { [weak self] button in
-            guard let stopwatch = self?.stopwatch else {
-                return
-            }
-            var config = button.configuration
-            config?.title = "Reset"
-            switch stopwatch.state {
-            case .started, .paused:
-                config?.baseBackgroundColor = .systemBlue
-            case .empty:
-                config?.baseBackgroundColor = .systemGray
-            }
-
-            button.configuration = config
-        }
-        button.addAction(
-            UIAction { _ in
-                self.stopwatch?.reset()
-            },
-            for: .touchUpInside
-        )
+        button.tintColor = .white
+        button.contentMode = .center
         return button
     }()
 
     private var stopwatch: StopwatchProtocol? {
         didSet {
-            label.text = "0:00:00"
-            resetButton.setNeedsUpdateConfiguration()
-            startButton.setNeedsUpdateConfiguration()
+            timerLabel.text = "0:00:00"
+            stateButton.setNeedsUpdateConfiguration()
         }
     }
 
@@ -91,6 +66,7 @@ final class StopwatchCell: UICollectionViewCell {
         super.init(frame: frame)
 
         setupLayout()
+        setupUI()
     }
 
     required init?(coder: NSCoder) {
@@ -105,15 +81,23 @@ final class StopwatchCell: UICollectionViewCell {
     }
 
     private func setupLayout() {
-        let stackView = UIStackView(arrangedSubviews: [label, startButton, resetButton])
-        stackView.axis = .horizontal
-        stackView.spacing = 16.0
-
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16.0)
-            make.centerY.equalToSuperview()
+        contentView.addSubview(timerLabel)
+        timerLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16.0)
+            make.top.equalToSuperview().inset(24.0)
         }
+
+        contentView.addSubview(stateButton)
+        stateButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16.0)
+            make.top.equalToSuperview().inset(16.0)
+            make.size.equalTo(CGSize(width: 40.0, height: 40.0))
+        }
+    }
+
+    private func setupUI() {
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 12.0
     }
 
     func configure(with stopwatch: StopwatchProtocol) {
@@ -125,14 +109,13 @@ final class StopwatchCell: UICollectionViewCell {
 extension StopwatchCell: StopwatchDelegate {
     func stopwatchTimeDidChange(hours: Int, minutes: Int, seconds: Int) {
         let text = "\(hours):\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
-        guard label.text != text else {
+        guard timerLabel.text != text else {
             return
         }
-        label.text = text
+        timerLabel.text = text
     }
 
     func stopwatchStateDidChange(stopwatch: Stopwatch) {
-        resetButton.setNeedsUpdateConfiguration()
-        startButton.setNeedsUpdateConfiguration()
+        stateButton.setNeedsUpdateConfiguration()
     }
 }

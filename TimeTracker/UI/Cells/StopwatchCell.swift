@@ -89,7 +89,7 @@ final class StopwatchCell: UICollectionViewCell {
         contentView.addSubview(stateButton)
         stateButton.snp.makeConstraints { make in
             make.trailing.top.equalToSuperview().inset(Constants.defaultMargin)
-            make.size.equalTo(CGSize(width: 40.0, height: 40.0))
+            make.size.equalTo(Constants.buttonSize)
         }
     }
 
@@ -120,4 +120,5 @@ extension StopwatchCell: StopwatchDelegate {
 
 private enum Constants {
     static let defaultMargin = 16.0
+    static let buttonSize = CGSize(width: 40.0, height: 40.0)
 }

@@ -44,7 +44,7 @@ final class StopwatchListVC: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = Theme.backgroundColor
-        title = "Stopwatch List"
+        title = "Time tracker"
 
         setupLayout()
         setupNavigationBar()
@@ -59,11 +59,11 @@ final class StopwatchListVC: UIViewController {
     }
 
     private func setupNavigationBar() {
-        let addBarItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        let addBarItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addStopwatch))
         navigationItem.rightBarButtonItem = addBarItem
     }
 
-    @objc private func addButtonTapped() {
+    @objc private func addStopwatch() {
         let stopwatch = Stopwatch(stopwatchTimer: stopwatchTimer)
         stopwatches.insert(stopwatch, at: 0)
 
@@ -94,7 +94,7 @@ extension StopwatchListVC: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        .init(width: collectionView.bounds.width - Constants.defaultMargin*2, height: 114.0)
+        .init(width: collectionView.bounds.width - Constants.defaultMargin*2, height: 72.0)
     }
 }
 
